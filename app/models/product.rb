@@ -1,5 +1,6 @@
 class Product
   include Mongoid::Document
+  paginates_per 12
 
   validates_presence_of :name, :price, :installments, :image, :url
 

@@ -1,0 +1,17 @@
+<div class="row">
+	<% @products.each do |product| %>
+		<div class="card col-md-4 text-center">
+		  <img src="<%= product.image %>" class="card-img-top" alt="...">
+		  <div class="card-body">
+		    <h5 class="card-title"><%= product.name %></h5>
+		    <p class="card-text">
+		    	R$ <%= product.price %> à vista<br>
+		    	Dividido em até <%= product.installments %> vezes no cartão
+		    </p>
+		    <a href="<%= product.url %>" class="btn btn-primary" target="_BLANK">Ver na loja</a>
+		  </div>
+		</div>
+	<% end %> 
+</div>
+
+<%= paginate @products %>

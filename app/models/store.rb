@@ -37,7 +37,7 @@ class Store
     json_value.each do |item|
       installments = item['items'].first['sellers'].first['commertialOffer']['Installments']
       product = Product.new
-      product.name = item['productName']
+      product.name = item['productTitle']
       product.price = installments.max_by{|k| k['Value'] }['Value']
       product.installments = installments.max_by{|k| k['NumberOfInstallments'] }['NumberOfInstallments']
       product.image = item['items'].first['images'].first['imageUrl']
