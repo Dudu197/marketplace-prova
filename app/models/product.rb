@@ -1,9 +1,12 @@
 class Product
   include Mongoid::Document
-  field :name, type: String, required: true
-  field :price, type: Float, required: true
-  field :installments, type: Integer, required: true
-  field :image, type: String, required: true
-  field :url, type: String, required: true
+
+  validates_presence_of :name, :price, :installments, :image, :url
+
+  field :name, type: String, default: ""
+  field :price, type: Float, default: 0
+  field :installments, type: Integer,, default: 1
+  field :image, type: String, default: ""
+  field :url, type: String, default: ""
   belongs_to :store
 end

@@ -2,6 +2,9 @@ class Store
   include Mongoid::Document
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
+  validates_presence_of :website, :logo
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -17,8 +20,8 @@ class Store
   field :remember_created_at, type: Time
 
   # Sotre fields
-  field :website, type: String, required: true
-  field :logo, type: String, required: true
+  field :website, type: String, default: ""
+  field :logo, type: String, default: ""
 
   has_many :products
 
