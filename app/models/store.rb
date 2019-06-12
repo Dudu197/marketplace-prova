@@ -1,7 +1,10 @@
+require 'net/http'
 class Store
   include Mongoid::Document
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
+  API_URL = "/api/catalog_system/pub/products/search"
 
   validates_presence_of :website, :logo
 
@@ -24,6 +27,25 @@ class Store
   field :logo, type: String, default: ""
 
   has_many :products
+
+
+  def import_products(from=0, to=49)
+    uri = URI.parse("#{website}#{API_URL}?_from=#{from}&_to=#{to}")
+    content = Net::HTTP.get(uri)
+    json_value = JSON.parse(content)
+    item = json_value.first
+    json_value.each do |item|
+      installments = item['items'].first['sellers'].first['commertialOffer']['Installments']
+      product = Product.new
+      product.name = item['productName']
+      product.price = installments.max_by{|k| k['Value'] }['Value']
+      product.installments = installments.max_by{|k| k['NumberOfInstallments'] }['NumberOfInstallments']
+      product.image = item['items'].first['images'].first['imageUrl']
+      product.url = item['link']
+      products << product
+    end
+    return save
+  end
 
 
   ## Trackable
