@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   post '/admin/import', to: 'import#import'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :products
-  devise_for :stores
+  devise_for :stores, controllers: { registrations: 'stores/registrations' }
 
   root 'marketplace#index'
   get '/', to: 'marketplace#index'
