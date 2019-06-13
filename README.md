@@ -1,24 +1,22 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Desafio desenvolvido em Ruby on Rails com MongoDB
 
-Things you may want to cover:
 
-* Ruby version
+### Não desenvolvidos
 
-* System dependencies
+* A comunicação com as seguintes APIs não foram desenvolvidas pelo motivo das APIs não apresentarem dados ou estarem indisponíveis
 
-* Configuration
+ -- http://www.timex.com.br/api/catalog_system/pub/products/search/
+ -- https://www.schumann.com.br/api/catalog_system/pub/products/search/
 
-* Database creation
+* A aplicação não utiliza ElasticSearch pois não foi possível instalar no ambiente de desenvolvimento por incompatibilidade com o Docker ao tentar definir variáveis da máquina virtual
 
-* Database initialization
 
-* How to run the test suite
+### Implantação
 
-* Services (job queues, cache servers, search engines, etc.)
+O desafio está disponível no website https://prova-rails.herokuapp.com/
 
-* Deployment instructions
-
-* ...
+Já existe um usuário cadastro:
+email: fossil@email.com
+senha: 1234567
