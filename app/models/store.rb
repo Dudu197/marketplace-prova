@@ -23,6 +23,7 @@ class Store
   field :remember_created_at, type: Time
 
   # Sotre fields
+  field :name, type: String, default: ""
   field :website, type: String, default: ""
   field :logo, type: String, default: ""
 

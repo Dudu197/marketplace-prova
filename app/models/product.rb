@@ -11,5 +11,4 @@ class Product
   field :url, type: String, default: ""
   belongs_to :store
 
-
 end
