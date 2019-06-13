@@ -37,6 +37,7 @@ class Store
     item = json_value.first
     json_value.each do |item|
       installments = item['items'].first['sellers'].first['commertialOffer']['Installments']
+      next unless installments and installments.count > 0
       product = Product.new
       product.name = item['productTitle']
       product.price = installments.max_by{|k| k['Value'] }['Value']
